@@ -1,0 +1,6 @@
+name = Inloggad och kompis
+description = Visa vem som är inloggad och kompis.
+core = 7.x
+package = Slöjdklubben
+
+files[] = loggedinusers.module

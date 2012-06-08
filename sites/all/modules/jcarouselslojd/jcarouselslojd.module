@@ -1,0 +1,15 @@
+<?php
+
+/**
+ * @file
+ * Provides integration with 3rd party modules and the jCarousel library.
+ */
+function jcarouselslojd_jcarousel_skin_info() {
+  $skins = array();
+ 
+  $skins['slojd'] = array(
+    'title' => t('Skin Slöjd'),
+    'file' => 'css/jcarousel-slojd.css',
+  );
+  return $skins;
+} 

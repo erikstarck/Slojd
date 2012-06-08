@@ -1,0 +1,6 @@
+name = Message Status Formatter
+description = Shows if a message is unread or read.
+core = 7.x
+package = Slöjdklubben
+
+files[] = messagestatusformatter.module

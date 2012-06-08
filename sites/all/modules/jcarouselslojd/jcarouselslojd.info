@@ -1,0 +1,8 @@
+name = jCarousel Slöjd Skin
+description = A skin.
+package = User interface
+core = 7.x
+
+files[] = jcarouselslojd.module
+
+

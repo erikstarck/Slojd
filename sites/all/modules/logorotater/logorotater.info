@@ -1,0 +1,6 @@
+name = Logo Rotater
+description = Show random logos.
+core = 7.x
+package = Slöjdklubben
+
+files[] = logorotater.module

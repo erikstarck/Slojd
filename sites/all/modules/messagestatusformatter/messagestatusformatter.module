@@ -1,0 +1,57 @@
+<?php
+/**
+ * Implements hook_field_formatter_info().
+ */
+function messagestatusformatter_field_formatter_info() {
+  return array(
+    'messagestatusformatter_formatter' => array( //Machine name of the formatter
+      'label' => t('Slöjd Message formatter'),
+      'field types' => array('list_boolean')
+      ),
+  );
+}
+
+
+/**
+ * Message is UNREAD and RECEIVER or REPLY_RECEIVER == LOGGED IN USER => RED
+ * Message is UNREAD and RECEIVER or REPLY_RECEIVER != LOGGED IN USER => YELLOW
+ * else => GREEN
+ * 
+ */
+function messagestatusformatter_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+
+  global $user;
+    $element = array();
+    $theMessageIsRead = 0;
+    $theMessageHasNewReplies = 0;
+     $theMessageIsUnRead = 0;
+    
+    $theMessageIsRead = (isset($entity->field_read[LANGUAGE_NONE]) ? ($entity->field_read[LANGUAGE_NONE][0]['value']==1) : 0);
+
+    $theMessageHasNewReplies = (isset($entity->field_newreplies[LANGUAGE_NONE]) ? ($entity->field_newreplies[LANGUAGE_NONE][0]['value']==1) : 0);
+    $theMessageIsUnRead = ($theMessageIsRead != 1) ;
+
+    $color = "green";
+    if($theMessageIsUnRead || $theMessageHasNewReplies) {
+      //User is receiver
+      if ($theMessageIsUnRead && ($entity->field_receiver[LANGUAGE_NONE][0]['uid'] == $user->uid)) {
+        $color = "red";
+      }
+      //User is reply receiver
+      elseif (isset($entity->field_replyreceiver[LANGUAGE_NONE])) {
+          if($theMessageHasNewReplies && ($entity->field_replyreceiver[LANGUAGE_NONE][0]['uid'] == $user->uid)) {
+            $color = "red";
+          }
+      }
+      
+      if($color != "red") $color = "yellow";
+    }
+  
+  $element[0]['#markup'] =  "<span style='background-color: ".$color."'>&nbsp;&nbsp;</span>";
+
+
+    return $element;
+}
+
+?>
+

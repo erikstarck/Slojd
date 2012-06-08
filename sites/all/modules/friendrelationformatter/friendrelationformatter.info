@@ -1,0 +1,6 @@
+name = Friend Relation Formatter
+description = Prints the friends embedded.
+core = 7.x
+package = Relation
+
+files[] = friendrelationformatter.module

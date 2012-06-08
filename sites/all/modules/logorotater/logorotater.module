@@ -1,0 +1,32 @@
+<?php
+
+/**
+ * Implements hook_block_info().
+ */
+function logorotater_block_info() {
+ $blocks['logorotater'] = array(
+    'info' => t('Roterande logga'), //The name that will appear in the block list.
+    'cache' => DRUPAL_CACHE_PER_ROLE, //Default
+  );
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ *
+ */
+function logorotater_block_view($delta = '') {
+    //Generate logo HTML with random image from logo-folder
+	$block = array();
+	global $user;
+	global $base_url;
+	
+    $logos = array("sites/default/files/logo_160_1.jpg", "sites/default/files/logo_160_2.jpg", "sites/default/files/logo_160_3.jpg", "sites/default/files/logo_160_4.jpg");
+    
+	$resultingHtml="<div class='rotatinglogo'><a href='".$base_url."/content/slöjdkorgen'><img src='".$base_url."/".$logos[rand(0,3)]."'/></a></div>";
+	$block['content']["#markup"] = $resultingHtml;
+	return $block;
+}
+
+
+?>

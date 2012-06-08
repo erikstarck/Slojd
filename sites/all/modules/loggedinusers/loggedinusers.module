@@ -1,0 +1,79 @@
+<?php
+
+/**
+ * Implements hook_block_info().
+ */
+function loggedinusers_block_info() {
+ $blocks['loggedinusers'] = array(
+    'info' => t('Visa inloggade och kompisar'), //The name that will appear in the block list.
+    'cache' => DRUPAL_CACHE_PER_ROLE, //Default
+  );
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ *
+ */
+function loggedinusers_block_view($delta = '') {
+	$block = array();
+	global $user;
+	global $base_url;
+	
+	$resultingHtml="";
+	switch($delta) {
+    	case 'loggedinusers':
+ 	 $blockWithTitle = block_load('loggedinusers', $delta); //Has the title
+      		$block['subject'] = $blockWithTitle->title;
+      		if(user_access('access content'))
+      		{
+      			
+
+				$friendusers = array();
+				$onlineTime = REQUEST_TIME - 900;
+				$sql = "select {users}.name as username, {users}.uid as userid from ".
+" {users},  {field_data_endpoints} firstendpoint ".
+"inner join   {field_data_endpoints} otherendpoint ON ".
+" ( {firstendpoint}.`entity_id`  = otherendpoint.`entity_id` ".
+" and  otherendpoint.`endpoints_r_index`=1 and otherendpoint.`endpoints_entity_id` <> :userid) ".
+"inner join {sessions} on ({sessions}.uid = otherendpoint.`endpoints_entity_id` AND {sessions}.timestamp > ".$onlineTime.") ".
+"where firstendpoint.`endpoints_entity_id`=:userid and {users}.uid= otherendpoint.`endpoints_entity_id`";
+
+				$result =  db_query($sql, array(':userid' => $user->uid));
+				$foundAUser = false;
+				global $base_url;
+				foreach ($result as $record) {
+					$foundAUser  = true;
+					$resultingHtml = $resultingHtml."<div class='grid-4 loggedinfriend'><div style='padding-bottom: 20px;'><div class='loggedinfriendicon'>&nbsp;</div><div class='loggedinfriendname'><a 	href='".$base_url."/users/".str_replace(" ", "-", $record->username)."'>"
+					.substr($record->username, 0, 8).(strlen($record->username)>8?"…":"")."</a></div><div class='loggedinfriendstaricon'>&nbsp;</div></div>".
+					"<div class='loggedinfriendmessage'><a href='".$base_url."/node/add/privat-meddelande?receiver=".$record->userid."&receivername=".$record->username."'>&nbsp;&nbsp;&nbsp;</a></div>".
+					"</div>";
+					array_push($friendusers, $record->userid);
+				}
+
+				//Add the current user
+				array_push($friendusers,  $user->uid);
+				$sql = "select {users}.name as username, {users}.uid as userid  from {users}, {sessions} where {users}.uid={sessions}.uid and {users}.uid not in (".implode(",", $friendusers).") AND {sessions}.timestamp > ".$onlineTime;
+
+				$result =  db_query($sql);
+				foreach ($result as $record) {
+				   $foundAUser  = true;
+
+					$resultingHtml = $resultingHtml."<div class='grid-4 loggedinfriend'><div style='padding-bottom: 20px;'><div class='loggedinfriendicon'>&nbsp;</div><div class='loggedinfriendname'><a 	href='".$base_url."/users/".str_replace(" ", "-", $record->username)."'>"
+					.substr($record->username, 0, 8).(strlen($record->username)>8?"…":"")."</a></div></div>".
+					"<div class='loggedinfriendmessage'><a href='".$base_url."/node/add/privat-meddelande?receiver=".$record->userid."&receivername=".$record->username."'>&nbsp;&nbsp;&nbsp;</a></div>".
+					"</div>";
+				}
+ 
+          		if($foundAUser==false) {
+				 $resultingHtml = "<div class='grid-9'>".t("No other users online.")."</div>";
+				}
+			}
+	}
+	$resultingHtml = $resultingHtml."";
+	$block['content']['#markup'] = $resultingHtml;
+	return $block;
+}
+
+
+?>
