@@ -1,0 +1,29 @@
+
+/* Pager */
+ul.pager {
+  background-color: white;
+  border-width: 0px;
+}
+
+.pager li.pager-last, .pager li.pager-last a, .pager li.pager-last a:hover, .pager li.first, .pager li.first a, .pager li.first a:hover {
+  border-radius: 0px;
+  -webkit-border-radius: 0px;
+}
+
+.item-list .pager li,
+.item-list .pager ul li {
+  float: none !important;
+}
+
+.item-list .pager {
+  margin: auto !important;
+}
+li.pager-first {
+  display: none !important;
+}
+li.pager-last {
+  display: none !important;
+}
+li.pager-next {
+  right: 0px !important;
+}

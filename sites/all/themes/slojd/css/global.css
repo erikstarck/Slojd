@@ -1,0 +1,468 @@
+/* This file will hold styles for the mobile version of your website (mobile first). */
+/* This also can include ANY global CSS that applies site-wide. Unless overwritten by a more specific style rule, CSS declarations in global.css will apply site-wide. */
+
+
+.zone-branding a {
+ text-decoration:none;  
+  color: #5c5c5c;
+}
+
+/* Top menu main */
+.main-menu li a {
+  color: #5c5c5c;
+  text-decoration:none;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 15px;
+  padding-top: 15px;
+/*  text-transform:uppercase;*/
+}
+
+.main-menu li {
+  border-left-width: 1px;
+  border-left-style: solid;
+  border-left-color: silver;
+  padding-top: 15px !important;
+  padding-bottom: 14px !important;
+  padding-left: 0em !important;
+  padding-right: 0em !important;
+}
+
+.main-menu li.last {
+  border-right-width: 1px;
+  border-right-style: solid;
+  border-right-color: silver;
+ }
+
+#main-menu.inline li {
+  margin-right: 0px !important;
+}
+
+.main-menu li.active-trail  a {
+background-color: #f2f2f2;
+color: black;
+}
+
+.main-menu li a:hover {
+background-color: #E73400;
+color: white;
+}
+/* /Top menu main */
+
+.maincontent {
+  min-height: 300px;
+  background-color: #f2f2f2;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+
+.extracontent {
+  background-color: #f2f2f2;
+}
+
+
+.innerheaderfirst {
+  min-height: 50px;
+  padding-top: 8px;
+}
+.innerheadersecond {
+  min-height: 50px;
+}
+.innerheadermenu {
+  min-height: 28px;
+}
+
+
+
+
+/* Login block at top */
+#user-login-form div {
+margin: 0 5px 0 0;
+font-size: 95%;
+/*float: left;*/
+}
+#user-login-form label, #user-login-form input {
+/*float: left;*/
+margin-right: 10px;
+}
+#user-login-form .form-required {
+display: none;
+}
+#user-login-form .item-list ul li {
+float: left;
+margin: 0 15px 0.25em 0;
+margin-right: 15px;
+padding: 0;
+list-style-type: none;
+}
+#block-user-login {
+margin-top: 2px;
+}
+#block-user-login h2 {
+display: none;
+}
+.block-login .form-item {
+  float:left;
+}
+
+
+.views-field-field-image , .views-field-field-instructionimage{
+  width: 90%;
+  margin: auto;
+  border-color: 
+  silver;
+  border-width: 1px;
+  border-style: solid;
+  padding: 5px;
+  margin-top: 5px;
+  min-height: 120px;
+}
+
+
+/*
+  Mina sidor
+*/
+.view-slojdprojekt .jcarousel-container-horizontal,
+.view-flag-bookmarks .jcarousel-container-horizontal{
+  padding-bottom: 24px;
+  margin-bottom: 24px;
+  }
+
+.view-slojdprojekt .jcarousel-item ,
+.view-flag-bookmarks .jcarousel-container-horizontal {
+  /*min-height: 180px;*/
+}
+
+
+/*
+ Logged in friends
+*/
+.loggedinfriend {
+  color: #EF3C06;
+  padding:5px;
+  border-left-width:1px;
+  border-style:solid;
+  border-color:silver
+}
+
+.loggedinfriendicon {
+  float:left;
+  width: 16px;
+  height: 16px;
+  background-image: url('../images/friend_online.jpg');
+  margin-right:10px;
+  margin-left:10px;
+}
+.loggedinfriendname  {
+  float:left;
+  margin-right:10px;
+}
+
+.loggedinfriendname a, .views-field-title a  {
+  font-weight: bold;
+  color: #EF3C06;
+  text-decoration:none;
+}
+
+.view-privata-meddelanden .views-field-title a {
+  color: black;
+}
+
+.loggedinfriendstaricon {
+  float:left;
+  width: 16px;
+  height: 16px;
+  background-image: url('../images/friends_star.jpg');
+}
+
+.loggedinfriendmessage {
+  margin:auto;
+  background-repeat: no-repeat; 
+  width: 16px;
+  margin-top: 5px;
+  clear:both;
+  height: 16px;
+  background-image: url('../images/friends_message.jpg');  
+}
+
+.loggedinfriendmessage a {
+  text-decoration:none;
+  width: 20px;
+}
+/*
+ /Logged in friends
+*/
+
+/*
+  Content blocks
+*/
+.silverline {
+  border-color: silver;
+  border-style:solid;
+  border-width: 1px;
+  background-color:white;
+  padding: 6px;
+  padding-bottom: 24px;
+  margin-bottom: 20px;
+  margin-left: -24px;
+  margin-right: -24px;
+}
+
+#block-forum-active ul li {
+  float:left;
+  width: 15em;
+}
+
+.block-inspirationskarussel-block-1 {
+ border-color: silver;
+  border-style:solid;
+  border-width: 1px;
+  background-color:white;
+  margin-left: -24px;
+  margin-right: -24px;
+}
+
+.block-inspirationskarussel-block-1 .block-inner {
+  padding: 20px;
+}
+
+/* Empty block used as a space filler */
+.block-16 {
+  background-color: white;
+  height: 24px;
+  margin-left: -24px;
+  margin-right: -24px;
+}
+
+
+.region-footer-first-inner a {
+  text-decoration: none;
+  color: #E73400;
+}
+
+.region-footer-first {
+  margin-top:24px;
+}
+
+.region-footer-first-inner {
+   background-color: #f2f2f2;
+   padding: 24px;
+   margin-right: -48px;
+}
+
+.region-footer-second-inner {
+  padding-left:25px;
+}
+
+/* =Footer
+---------------------------------------------------------------------------------------------------------------------------------- */
+#footer-100 {clear: both; height: 225px; width: 945px; margin: 0 auto 40px; padding:0; color: #000; font-size: 11px; position: relative}
+#footer-100 .container{padding: 0 0; background: #fff; height: 207px}
+    #footer-100 #footer-logo{position: absolute; width: 126px; height: 83px; display: block; top:26px; left:32px;}
+    
+    #footer-100 .external-panel{background:url('../images/sep.png') repeat-x; width: 745px; float: right; padding:3px 0; margin: 26px 32px 0 0}
+    #footer-100 .external-panel ul{margin: 0; list-style: none; background:url('../images/sep.png') repeat-x left bottom; overflow: hidden; height: 153px}
+    #footer-100 .external-panel li{float: left; width: 77px; text-align: center; margin-left: 4px}
+    #footer-100 .external-panel li.info{width: 160px; text-align: left; padding: 34px 15px 10px 10px; margin-left: 0;}
+        #footer-100 .info h5{font:bold 11px/15px "Arial", sans-serif; maargin: 0}
+        #footer-100 .info p{font:normal 11px/15px "Arial", sans-serif; margin: 0; padding: 0}
+        #footer-100 li a{font-size: 11px; font-weight: bold; text-decoration:underline; display: block; background: #fff url('../images/footer-100-logo-panel.png') 0 0 no-repeat; height: 60px; line-height: 16px; padding: 90px 0 0;
+        transition:background-color .2s linear;
+        -webkit-transition:background-color .2s linear;
+        -moz-transition:background-color .2s linear;}
+        #footer-100 li a:hover{background-color: #daf4ff; text-decoration: none}
+            #footer-100 li .a1{background-position: 19px 31px}
+            #footer-100 li .a2{background-position: -65px 31px}
+            #footer-100 li .a3{background-position: -148px 31px}
+            #footer-100 li .a4{background-position: -235px 31px}
+            #footer-100 li .a5{background-position: -319px 31px}
+            #footer-100 li .a6{background-position: -395px 31px}
+            #footer-100 li .a7{background-position: -471px 31px}
+        
+    #footer-100 .copyright, #footer-100 .shr{color: #fff; font-size: 11px; padding: 4px 16px}
+        #footer-100 .copyright{text-transform: uppercase; float: left; font-size: 10px}
+        #footer-100 .shr{float:right; font-family: Georgia, serif}
+        
+    #footer-100 li.nomargin{margin: 0}  
+
+tr:hover td,
+tr.even:hover td.active,
+tr.odd:hover td.active {
+  background: transparent;
+}
+
+.rotatinglogo {
+  height:138px;
+}
+
+.navigation ul.menu li {
+  padding-bottom: 8px;
+  padding-top: 8px;
+  border-bottom-color:silver;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+}
+
+ul.menu li ul li {
+  border:none;
+}
+
+ul.menu li a {
+  color: #EF3C06;
+  text-decoration: none;
+}
+
+ul.action-links li {
+  list-style: none !important;
+}
+
+.taxonomiblock {
+  padding-bottom: 40px;
+}
+
+.taxonomigrid  table {
+  border:none;
+}
+
+.taxonomigrid {
+  border: 1px solid silver;
+  background-color:white;
+}
+
+.taxonomigrid .views-field-field-instructionimage {
+  max-width:153px;
+}
+
+.taxonomigrid .views-field-title {
+  margin: auto;
+  text-align: center;
+}
+
+
+.block-loggedinusers .block-title {
+  font-size: 30px;
+  padding-left: 16px;
+  font-weight: normal;
+  letter-spacing: 0em;
+}
+
+.showalllink {
+  float:right;
+  padding-right:20px;
+  padding-top: 12px;
+}
+
+li.pager-next a,
+li.pager-previous a,
+li.pager-last a,
+li.pager-first a,
+li.pager-item a,
+.showalllink a {
+  color: #EF3C06;
+  text-decoration: none;
+  font-weight:bold;
+}
+
+
+
+
+.pagetitle {
+  color: #177DCE;
+  font-size: 30px;
+}
+
+.slojdkorgentitle {
+   font-size: 30px;
+   padding-left:17px;
+}
+
+.slojdkorgenbody {
+   padding-left:17px;
+   padding-bottom: 10px;
+   padding-top: 10px;
+}
+
+/**
+ *Popup
+ **/
+#simple-dialog-container .maincontent {
+  background-color: white;
+}
+
+.ui-icon {
+  width: 83px !important;
+  height: 33px !important;  
+}
+
+.ui-icon-closethick {
+  background-position: 0px 0px !important;
+}
+
+.ui-dialog .ui-dialog-titlebar {
+  padding-top: 1.5em !important;
+}
+
+.ui-dialog-titlebar-close {
+  width: 83px !important;
+  height: 33px !important;
+}
+.ui-dialog-titlebar-close .ui-icon{
+  background-image: url(http://derek.slojdklubben.se/drupal7/sites/all/themes/slojd/images/close_button.png);
+}
+
+.ui-corner-all {
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+  
+}
+
+.ui-widget-header {
+  border: none;
+  background: none;
+  border-bottom-style: solid;
+  border-bottom-color: silver;
+  border-bottom-width: 1px;
+}
+
+.ui-dialog-titlebar {
+  padding-bottom: 1.5em;  
+}
+
+.book-navigation .menu {
+  border-width: 0px;
+}
+
+
+.book-navigation .menu ul {
+  list-style-type: none;
+  border-width: 0px;
+}
+.book-navigation .menu li.leaf {
+  float: left;
+  list-style-type: none;
+  list-style-image: none;
+}
+
+#edit-comment-body-und-0-format {
+  display: none;
+}
+
+.field-name-field-teknik .field-label  ,
+.field-name-field-verktyg .field-label  ,
+.field-name-field-material .field-label  {
+  text-transform: uppercase;
+}
+
+
+.field-name-field-teknik a ,
+.field-name-field-material a ,
+.field-name-field-verktyg a {
+  color: #EF3C06;
+}
+
+
+/* Flag buttons */
+.flag {
+  text-transform: uppercase;
+}
