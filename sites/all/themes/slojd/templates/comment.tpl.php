@@ -1,4 +1,3 @@
-<!-- comment -->
 <article<?php print $attributes; ?>>
   <!--
   <header>
@@ -15,18 +14,8 @@
     <?php endif; ?>
   </header>
 -->
-<div class="grid-22">
-  <div class="grid-3">
   <?php print $picture; ?>
-  </div>
-  <div class="grid-16">
-      <div<?php print $content_attributes; ?>>
-    <?php
-      hide($content['links']);
-      print render($content);
-    ?>
-  </div>
-  <div class="grid-20">
+ 
   <footer class="comment-submitted">
    <?php
       print t('Submitted by !username on !datetime',
@@ -34,6 +23,12 @@
     ?>
   </footer>
 
+  <div<?php print $content_attributes; ?>>
+    <?php
+      hide($content['links']);
+      print render($content);
+    ?>
+  </div>
 
   <?php if ($signature): ?>
     <div class="user-signature"><?php print $signature ?></div>
@@ -42,9 +37,5 @@
   <?php if (!empty($content['links'])): ?>
     <nav class="links comment-links clearfix"><?php print render($content['links']); ?></nav>
   <?php endif; ?>
-    
-  </div>
-</div>
 
 </article>
-<!-- /comment -->

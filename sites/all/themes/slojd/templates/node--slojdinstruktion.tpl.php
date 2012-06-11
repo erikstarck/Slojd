@@ -1,11 +1,6 @@
 <!-- node--slojdinstruktion -->
 <!-- <div class="container-24"> -->
 <article<?php print $attributes; ?>>
-<style type="text/css">
-h1.title {
-  display:none;
-}
-</style>
   <div<?php print $content_attributes; ?>>
   <div class="grid-23">
     <div class="grid-12">

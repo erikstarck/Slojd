@@ -35,8 +35,7 @@
     <?php
     /* Example:
     //Need to do this to get the Simple Dialog (modal) to work
-    
-<ul class="menu"><li class="first leaf dhtml-menu" id="dhtml_menu-1555"><a href="/drupal7/content/garndocka-steg-1">Garndocka steg 1</a></li>
+            <ul class="menu"><li class="first leaf dhtml-menu" id="dhtml_menu-1555"><a href="/drupal7/content/garndocka-steg-1">Garndocka steg 1</a></li>
 <li class="leaf dhtml-menu" id="dhtml_menu-1556"><a href="/drupal7/content/garndocka-steg-2">Garndocka steg 2</a></li>
 <li class="leaf dhtml-menu" id="dhtml_menu-1557"><a href="/drupal7/content/garndocka-steg-3">Garndocka steg 3</a></li>
 <li class="leaf dhtml-menu" id="dhtml_menu-1558"><a href="/drupal7/content/garndocka-steg-4">Garndocka steg 4</a></li>
@@ -44,8 +43,7 @@
 <li class="leaf dhtml-menu" id="dhtml_menu-1560"><a href="/drupal7/content/garndocka-steg-6">Garndocka steg 6</a></li>
 <li class="last leaf dhtml-menu" id="dhtml_menu-1561"><a href="/drupal7/content/garndocka-steg-7">Garndocka steg 7</a></li>
 </ul>
-
-Each link should be like:
+Each link should be
     <a class="simple-dialog" name="region-content" title=" " href="http://derek.slojdklubben.se/drupal7/content/garndocka-steg-1">Garndocka</a>
 */
   $qp = htmlqp($tree); // Generate a new QueryPath object.

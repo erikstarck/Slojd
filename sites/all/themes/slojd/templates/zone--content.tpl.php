@@ -5,11 +5,10 @@
     });
 </script>
 
-<?php //Removed the breadcrumb, this is now in region--content.tpl.php ?>
 <?php if ($wrapper): ?><div<?php print $attributes; ?>><?php endif; ?>  
   <div<?php print $content_attributes; ?>>    
     <?php if ($messages): ?>
-      <div  class="grid-<?php print $columns; ?>"><?php print $messages; ?></div>
+      <div id="messages" class="grid-<?php print $columns; ?>"><?php print $messages; ?></div>
     <?php endif; ?>
     <?php print $content; ?>
   </div>
