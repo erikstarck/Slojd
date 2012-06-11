@@ -450,15 +450,29 @@ li.pager-item a,
 
 .field-name-field-teknik .field-label  ,
 .field-name-field-verktyg .field-label  ,
-.field-name-field-material .field-label  {
+.field-name-field-material .field-label
+{
   text-transform: uppercase;
 }
 
 
 .field-name-field-teknik a ,
 .field-name-field-material a ,
-.field-name-field-verktyg a {
+.field-name-field-verktyg a ,
+.field-name-field-teknikintresse a ,
+.field-name-field-materialintresse a ,
+.field-name-field-verktygsintresse a {
+
   color: #EF3C06;
+    text-decoration: none;
+}
+
+.field-name-field-teknikintresse .field-item  ,
+.field-name-field-verktygsintresse .field-item  ,
+.field-name-field-materialintresse .field-item {
+    font-size: x-large;
+    float: left;
+    margin-left: 20px;
 }
 
 
