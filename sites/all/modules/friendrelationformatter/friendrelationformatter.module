@@ -18,10 +18,11 @@ function friendrelationformatter_field_formatter_info() {
  * Can be used to render a field of friends.
  */
 function friendrelationformatter_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
-    global $user;
-
+    global $user, $base_url;
+    
     $element = array();
     list($entity_id) = entity_extract_ids($entity_type, $entity);
+    $resultingHtml = "";
     foreach ($items as $delta => $item) {
         //Only print the relations where I am the source
         $relation = (object) $item;
@@ -32,17 +33,25 @@ function friendrelationformatter_field_formatter_view($entity_type, $entity, $fi
 
         if ($sourceUserId == $user->uid) {
             $frienduser = user_load($targetUserId);
-            $friendLink = "<a href='?q=user/".$frienduser->uid."'>".$frienduser->name. "</a>";
-            array_push($friendArray, $friendLink);
+            debug($frienduser);
+            $resultingHtml = $resultingHtml."<div class='grid-4 loggedinfriend'><div style='padding-bottom: 20px;'><div class='loggedinfriendicon'>&nbsp;</div><div class='loggedinfriendname'><a 	href='".$base_url."/users/".str_replace(" ", "-", $frienduser->name)."'>"
+                    .substr($frienduser->name, 0, 8).(strlen($frienduser->name)>8?"…":"")."</a></div><div class='loggedinfriendstaricon'>&nbsp;</div></div>".
+                    "<div class='loggedinfriendmessage'><a href='".$base_url."/node/add/privat-meddelande?receiver=".$frienduser->uid."&receivername=".$frienduser->name."'>&nbsp;&nbsp;&nbsp;</a></div>".
+                    "</div>";            
+
+//            $friendLink = "<a href='?q=user/".$frienduser->uid."'>".$frienduser->name. "</a>";
+//            array_push($friendArray, $friendLink);
         }
         
-        $element[$delta]["myfriends"] = array(
+ /*       $element[$delta]["myfriends"] = array(
          '#theme' => 'item_list',
         '#items' => $friendArray,
         '#type' => 'ul',
             
-        );
+        );*/
     }
+    $resultingHtml = $resultingHtml."";
+    $element[0]['#markup'] = $resultingHtml;
     return $element;
 }
 ?>
