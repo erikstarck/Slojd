@@ -43,6 +43,26 @@ function slojd_form_alter(&$form, &$form_state, $form_id) {
 }
 
 /**
+ * Trying to modify how the Slรถjdkorgen menu is rendered.
+ */
+function slojd_menu_link(array $variables) {
+  $element = $variables['element'];
+  $sub_menu = '';
+
+  if ($element['#below']) {
+    $sub_menu = drupal_render($element['#below']);
+  }
+  if(isset($element['#localized_options']['attributes']) == false)
+    $element['#localized_options']['attributes']=array();
+/*  $element['#localized_options']['attributes']['name'] = "region-content";
+  $element['#localized_options']['attributes']['class'] = "simple-dialog";
+ debug($element['#localized_options']);
+*/   $output = l($element['#title'], $element['#href'], $element['#localized_options']);
+  
+  return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
+}
+
+/**
  * Change the previous link to work even at pager page 0, it then links to the last page.
  */
 function slojd_pager_previous($variables) {
