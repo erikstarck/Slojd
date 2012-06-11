@@ -16,7 +16,13 @@ ul.pager {
 }
 
 .item-list .pager {
-  margin: auto !important;
+  margin: 0 10px 10px !important;
+  border-top: 1px solid;
+  border-radius: 0;
+}
+
+.pager li.pager-previous {
+  border-left: 1px solid #BBBBBB;
 }
 li.pager-first {
   display: none !important;
@@ -24,6 +30,13 @@ li.pager-first {
 li.pager-last {
   display: none !important;
 }
-li.pager-next {
+
+.pager li.pager-next {
   right: 0px !important;
+  position: relative;
+  border-left: 0;
+}
+
+.pager li.pager-next.last, .pager li.pager-previous.first {
+  display: none;
 }
