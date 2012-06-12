@@ -10,6 +10,8 @@
     <?php print render($title_prefix); ?>
   <?php if (drupal_is_front_page() == false ) : ?>
     <?php if ($title): ?>
+    <?php //Always hide
+    $title_hidden = true; ?>
     <?php if ($title_hidden): ?><div class="element-invisible"><?php endif; ?>
     <h1 class="title" id="page-title"><?php print $title; ?></h1>
     <?php if ($title_hidden): ?></div><?php endif; ?>
