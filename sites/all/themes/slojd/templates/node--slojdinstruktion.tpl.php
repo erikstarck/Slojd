@@ -1,13 +1,14 @@
 <!-- node--slojdinstruktion -->
 <!-- <div class="container-24"> -->
 <article<?php print $attributes; ?>>
-    <h2><?php print $title; ?></h2>
     <div<?php print $content_attributes; ?>>
         <div class="grid-23">
-            <div class="grid-12">
-                <?php print render($content['field_instructionimage']); ?>
+            <div style="float:left; padding-right: 32px;">
+                <?php
+                print render($content['field_instructionimage']); ?>
             </div>
-            <div class="grid-10">
+            <div >
+                <h2 class="slojdtitle"><?php print $title; ?></h2>
                 <?php print render($content['body']); ?>
                 <?php if (!empty($content['links'])): ?>
                     <nav class="links node-links clearfix"><?php print render($content['links']); ?></nav>

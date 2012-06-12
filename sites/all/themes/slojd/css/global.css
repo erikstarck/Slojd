@@ -2,6 +2,10 @@
 /* This also can include ANY global CSS that applies site-wide. Unless overwritten by a more specific style rule, CSS declarations in global.css will apply site-wide. */
 
 
+.slojdtitle {
+    color: #1C79CC;
+}
+
 .zone-branding a {
  text-decoration:none;  
   color: #5c5c5c;
