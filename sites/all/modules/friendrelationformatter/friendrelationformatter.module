@@ -33,7 +33,7 @@ function friendrelationformatter_field_formatter_view($entity_type, $entity, $fi
 
         if ($sourceUserId == $user->uid) {
             $frienduser = user_load($targetUserId);
-            $resultingHtml = $resultingHtml."<div class='grid-4 loggedinfriend'><div style='padding-bottom: 20px;'><div class='loggedinfriendicon'>&nbsp;</div><div class='loggedinfriendname'><a 	href='".$base_url."/users/".str_replace(" ", "-", $frienduser->name)."'>"
+            $resultingHtml = $resultingHtml."<div class='grid-4 loggedinfriend'><div style='padding-bottom: 20px;'><div class='loggedinfriendicon'>&nbsp;</div><div class='loggedinfriendname'><a href='".$base_url."/users/".str_replace(" ", "-", $frienduser->name)."'>"
                     .substr($frienduser->name, 0, 8).(strlen($frienduser->name)>8?"…":"")."</a></div><div class='loggedinfriendstaricon'>&nbsp;</div></div>".
                     "<div class='loggedinfriendmessage'><a href='".$base_url."/node/add/privat-meddelande?receiver=".$frienduser->uid."&receivername=".$frienduser->name."'>&nbsp;&nbsp;&nbsp;</a></div>".
                     "</div>";            
