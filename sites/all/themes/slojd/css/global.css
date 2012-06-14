@@ -1,9 +1,55 @@
 /* This file will hold styles for the mobile version of your website (mobile first). */
 /* This also can include ANY global CSS that applies site-wide. Unless overwritten by a more specific style rule, CSS declarations in global.css will apply site-wide. */
 
+.book-navigation .page-links {
+    border-color: silver;
+}
+.book-navigation .menu {
+    padding: 1em 3em 2.5em 3em;
+}
+.navigationwrapper {
+    text-align: left;
+	margin: 0px auto;
+	padding: 0px;
+	border:0;
+	width: 800px;
+}
+.navigationleft {
+    float: left;
+	width: 200px;
+        padding:20px;
+}
+.navigationcentre {
+    float: left;
+	width: 300px;
+}
+.navigationright {
+    float: right;
+	width: 200px;
+        padding:20px;
+}
+
+
+.ui-dialog .ui-dialog-content {
+    overflow: visible;
+}
+
+.ui-dialog .ui-dialog-titlebar-close:hover, .ui-dialog .ui-dialog-titlebar-close:focus {
+    padding: 1px;
+}
+
+a.ui-state-hover {
+    border: 0px !important;
+    background: none !important;
+}
 
 .slojdtitle {
     color: #1C79CC;
+}
+
+.slojdinstruktionimage {
+    float:left; 
+    padding-right: 32px;
 }
 
 .zone-branding a {
@@ -424,9 +470,6 @@ li.pager-item a,
 .ui-widget-header {
   border: none;
   background: none;
-  border-bottom-style: solid;
-  border-bottom-color: silver;
-  border-bottom-width: 1px;
 }
 
 .ui-dialog-titlebar {
