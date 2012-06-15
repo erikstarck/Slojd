@@ -1,36 +1,35 @@
-<!-- node--slojdinstruktion -->
-<div class=""> 
-<?php
-/*Example:
- * 
-body (Array, 1 element)
-field_material (Array, 1 element)
-field_verktyg (Array, 1 element)
-field_teknik (Array, 1 element)
-field_instructionimage (Array, 1 element)
-field_inspiration (Array, 1 element)
-book (Array, 29 elements)
-*/
-global $base_url;
-?>
-<!-- javascript h -->
+<!-- NODE SLÖJDPROJEKT -->
 <article<?php print $attributes; ?>>
-    <div<?php print $content_attributes; ?>>
-        <div class="slojdinstruktionwrapper">
-            <div class="slojdinstruktionimage">
-                <?php print render($content['field_instructionimage']); ?>
-            </div>
-            <div class="slojdinstruktionbody">
-                <h2 class="slojdtitle"><?php print $title; ?></h2>
-                <?php print render($content['body']); ?>
-                <?php if (!empty($content['links'])): ?>
-               
-                
-                <?php
-                //Hide all buttons
+  <?php print $user_picture; ?>
+  <?php print render($title_prefix); ?>
+  <?php if (!$page && $title): ?>
+  <header>
+    <h2<?php print $title_attributes; ?>><a href="<?php print $node_url ?>" title="<?php print $title ?>"><?php print $title ?></a></h2>
+  </header>
+  <?php endif; ?>
+  <?php print render($title_suffix); ?>
+  <?php if ($display_submitted): ?>
+  <footer class="submitted"><?php print $date; ?> -- <?php print $name; ?></footer>
+  <?php endif; ?>  
+  
+  <div<?php print $content_attributes; ?>>
+    <?php
+      // We hide the comments and links now so that we can render them later.
+      hide($content['comments']);
+      hide($content['links']);
+//      debug($content);
+      print render($content);
+    ?>
+  </div>
+  
+  <div class="clearfix">
+    <?php if (!empty($content['links'])): ?>
+      <?php
+//Hide all buttons
                 hide($content['links']);
                 global $user;
-
+                global $base_url;
+                
                 if ( $user->uid ) {
                     /*
                      * Example: 
@@ -51,27 +50,10 @@ global $base_url;
                 <a href="<?php echo $base_url."/".$linktoprint;?>" ><img src="<?php echo $base_url;?>/sites/all/themes/slojd/images/print_button.png"></a>
                 <!--
                 <nav class="links node-links clearfix"><?php //print render($content['links']); ?></nav>
-                -->
-                <?php endif; ?>
-            </div>
-            <div class="slojdinstruktionfooter">&nbsp;</div>
-        </div>
-        <div style="clear:both;">
-            <?php
-            hide($content['comments']);
-            print render($content['book_navigation']);
-            ?>
-        </div>
-        <div class="slojdinstruktiontaxonomylinks">
-            <?php
-            print render($content);
-            ?>
-        </div>
+                -->      
+    <?php endif; ?>
+    <div class="">
+      <?php print render($content['comments']); ?>
     </div>
-
-    <div class="clearfix">
-        <?php print render($content['comments']); ?>
-    </div>
+  </div>
 </article>
-</div>
-<!-- /node--slojdinstruktion  -->

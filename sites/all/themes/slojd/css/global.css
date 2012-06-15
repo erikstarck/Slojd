@@ -1,23 +1,55 @@
 /* This file will hold styles for the mobile version of your website (mobile first). */
 /* This also can include ANY global CSS that applies site-wide. Unless overwritten by a more specific style rule, CSS declarations in global.css will apply site-wide. */
 
-.book-navigation .page-links {
+.book-navigation .page-links{
     border-color: silver;
 }
 .book-navigation .menu {
     padding: 1em 3em 2.5em 3em;
 }
+
+.slojdinstruktiontaxonomylinks {
+    padding-top: 10px;
+}
+
+.slojdinstruktionimage .silverlineimage {
+    border-width: 1px;
+    border-color: silver;
+    border-style: solid;
+}
+
+.slojdinstruktionwrapper {
+    text-align: left;
+    margin: 0px auto;
+    padding: 0px;
+    border:0;
+    padding-bottom: 20px;
+}
+
+.slojdinstruktionimage {
+    float: left;
+}
+.slojdinstruktionbody {
+    float: right;
+    width: 55%;
+}
+
+.slojdinstruktionfooter {
+    clear:both;
+    height: 20px;
+}
+
 .navigationwrapper {
     text-align: left;
 	margin: 0px auto;
 	padding: 0px;
 	border:0;
-	width: 800px;
+
 }
 .navigationleft {
     float: left;
 	width: 200px;
-        padding:20px;
+        padding:10px;
 }
 .navigationcentre {
     float: left;
@@ -25,10 +57,13 @@
 }
 .navigationright {
     float: right;
-	width: 200px;
-        padding:20px;
+    padding:10px;
+    padding-right: 40px;
 }
 
+.node-slojdinstruktion {
+ padding-bottom: 40px;   
+}
 
 .ui-dialog .ui-dialog-content {
     overflow: visible;
@@ -458,6 +493,7 @@ li.pager-item a,
   height: 33px !important;
 }
 .ui-dialog-titlebar-close .ui-icon{
+    /* must be changed */
   background-image: url(http://derek.slojdklubben.se/drupal7/sites/all/themes/slojd/images/close_button.png);
 }
 
@@ -465,6 +501,12 @@ li.pager-item a,
   -moz-border-radius: 0px;
   border-radius: 0px;
   
+}
+
+.sparafavoritknapp {
+    width: 170px;
+    background: #DDD url(../images/favorite_button.png) no-repeat;
+    border: 0px;
 }
 
 .ui-widget-header {

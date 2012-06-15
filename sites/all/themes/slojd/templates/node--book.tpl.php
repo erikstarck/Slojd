@@ -12,16 +12,48 @@
   $parentBook = node_view(node_load($nid));
 ?>  
         <div class="">
-            <div class="slojdinstruktionimage">
+  <div class="slojdinstruktionimage">
                 <?php print render($parentBook['field_instructionimage']); ?>
             </div>
-            <div >
+            <div class="slojdinstruktionbody">
                 <h2 class="slojdtitle"><?php print $title; ?></h2>
                 <?php print render($parentBook['body']); ?>
                 <?php if (!empty($parentBook['links'])): ?>
-                    <nav class="links node-links clearfix"><?php print render($parentBook['links']); ?></nav>
+               
+                
+                <?php
+                //Hide all buttons
+                hide($parentBook['links']);
+                global $user;
+                global $base_url;
+
+                if ( $user->uid ) {
+                    /*
+                     * Example: 
+                     * <span class="flag-wrapper flag-bookmarks flag-bookmarks-189">
+                      <a href="/drupal7/flag/unflag/bookmarks/189?destination=node/189&amp;token=0uL6RiY1J9E84gdHin-Y8bwQp5ZpkkAQ5h3qE8XmTPQ" title="Ta bort favorit" class="flag unflag-action flag-link-toggle" rel="nofollow">Ta bort favorit</a><span class="flag-throbber">&nbsp;</span>
+                    </span>
+                     */
+                    $qp = htmlqp($parentBook['links']['flag']['#links']['flag-bookmarks']['title']); // Generate a new QueryPath object.
+                    $linktoflag = $qp->find("a")->attr("href");
+                    ?>
+                    <a href="<?php echo $linktoflag;?>" ><img src="<?php echo $base_url;?>/sites/all/themes/slojd/images/favorite_button.png"></a>
+                    <?php
+                }
+                ?>
+                <?php
+                $linktoprint = $parentBook['links']['print_pdf']['#links']['book_pdf']['href'];
+                ?>
+                <a href="<?php echo $base_url."/".$linktoprint;?>" ><img src="<?php echo $base_url;?>/sites/all/themes/slojd/images/print_button.png"></a>
+                <!--
+                <nav class="links node-links clearfix"><?php //print render($content['links']); ?></nav>
+                -->
                 <?php endif; ?>
             </div>
+            <div class="slojdinstruktionfooter">&nbsp;</div>            
+            
+            
+            
         </div>
     <!--
         <div style="width:100%;" class="">
@@ -74,7 +106,7 @@
     <div style="clear:both;">
   <?php 
     hide($content['links']); 
-    print render($parentBook['book_navigation']);
+    print render($content['book_navigation']);
   ?>
          </div>   
   <?php print render($content['comments']); ?>

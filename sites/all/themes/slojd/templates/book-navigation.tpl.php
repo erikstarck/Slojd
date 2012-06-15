@@ -47,25 +47,43 @@ global $base_url;
      * Each link must be like:
       <a class="simple-dialog" name="region-content" title=" " href="http://derek.slojdklubben.se/drupal7/content/garndocka-steg-1">Garndocka</a>
      */
-    debug($tree);
-    debug($prev_url);
     $qp = htmlqp($tree); // Generate a new QueryPath object.
     $qp->find("li.leaf a")->addClass("simple-dialog");
     $qp->top()->find("li.leaf a")->attr("name", "region-content");
     $qp->top()->find("li.leaf a")->attr("title", " ");
-    $qp->top()->find("li.leaf a")->attr("rel", "width:900px ");
+    $qp->top()->find("li.leaf a")->attr("rel", "width:960px ");
 
+
+    //Save the first and last links to session
+    $bookfirstlink = $qp->top()->find("li.first a")->attr("href");
+    $booklastlink = $qp->top()->find("li.last a")->attr("href");
+    if (isset($bookfirstlink)) $_SESSION['bookfirstlink'] = $bookfirstlink;
+    else $bookfirstlink = $_SESSION['bookfirstlink'];
+    if (isset($booklastlink)) $_SESSION['booklastlink'] = $booklastlink;
+    else $booklastlink = $_SESSION['booklastlink'];
+
+    //There should always be two buttons so need to set the urls if they don't exist
+    if (!$prev_url) {
+        $prev_url = $booklastlink;
+    }
+    if (!$next_url) {
+        $next_url = $bookfirstlink;
+    }
+
+    //Replace the link text with numbers
     $children = $qp->top()->find("li.leaf");
     $index = 1;
     foreach ($children as $child) {
         $child->find("a")->text("" . $index++);
     }
 
+    //Save the menu in the session so we can use it when browsing the pages.
     $tree = $qp->top()->find("body")->children()->html();
-
-    if (!$prev_url) {
-        $prev_url = $next_url;
-    }
+    if (isset($tree)) $_SESSION['booktree'] = $tree;
+    else $tree = $_SESSION['booktree'];
+    
+    //We don't need the link to the parent of the book, it is printed at the top at all times.
+    $parent_url = NULL;
     ?>
         <?php if ($has_links): ?>
             <div class="page-links clearfix navigationwrapper">
