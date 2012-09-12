@@ -1,6 +1,8 @@
 <div class="profile">
+
     <?php //debug($user_profile['flags' ]); ?>
     <?php global $user; ?>
+    <?php global $base_url;  ?>
     <?php $user_profile['flags']['#title'] = null; ?>
     <?php $user_profile['flags']['intesnall_anvandare']['#title'] = null; ?>
     <?php $user_profile['flags']['kompis']['#title'] = null; ?>
@@ -22,12 +24,15 @@
         <div class="grid-16">
             <div class="grid-14 silverline">
                 <?php //The numberofmessages-session variabel is set in the messages block, at the top in the header.?>
-                <h3><?php echo t("My messages");?></h3>
-                  <?php echo t("Number of messages: ".$_SESSION["numberofmessages"] ); ?>
+                <h3 class="numberofmessagestitle">
+                    <img src="<?php echo $base_url; ?>/sites/all/themes/slojd/images/messages_icon.png"></img> <span><?php echo t("My messages");?></span></h3>
+                <div class="numberofmessages">
+                    <?php echo t("Number of messages: ".$_SESSION["numberofmessages"] ); ?>
+                </div>
 
             </div>
             <div class="grid-14 silverline">
-                <h3><?php echo t("Friends"); ?></h3>
+                <h3><img src="<?php echo $base_url; ?>/sites/all/themes/slojd/images/myfriends_icon.png"></img> <span><?php echo t("Friends"); ?></span></h3>
                 <?php
                 //only render if not currently logged in user
                 if ($user_profile['field_profilename']['#object']->uid != $user->uid) {
@@ -49,7 +54,7 @@
             </div>
 
             <div class="grid-14 silverline">
-                <h3><?php echo t("My interests"); ?></h3>
+                <h3> <img src="<?php echo $base_url; ?>/sites/all/themes/slojd/images/minaprojekt.png"><span><?php echo t("My interests"); ?></span></h3>
                 <?php print render($user_profile['field_teknikintresse']); ?>
                 <?php print render($user_profile['field_materialintresse']); ?>
                 <?php print render($user_profile['field_verktygsintresse']); ?>

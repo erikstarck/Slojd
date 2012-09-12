@@ -2,6 +2,7 @@
 <script type="text/javascript">
     jQuery(document).ready(function(){
         jQuery(".karusell").css("position","static");
+       
     });
 </script>
 

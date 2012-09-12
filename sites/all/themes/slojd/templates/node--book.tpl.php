@@ -1,3 +1,11 @@
+
+<script type="text/javascript">
+//    jQuery(window).load(function(){
+//        jQuery('#region-content').dialog({ modal: true, width: 900, minHeight: 600, top: 60 }).position({of: "#maincontent", my: "center top", at: "center top", offset: "0 60"});
+//    });
+</script>
+
+
 <div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
 <?php
 //Load the book parent
@@ -90,25 +98,49 @@
   <div class="content"<?php print $content_attributes; ?>>
       <div>
           <div style="width: 50%; float:left;">
-    <?php
-      // We hide the comments and links now so that we can render them later.
-      hide($content['comments']);
-      hide($content['links']);
-      hide($content['book_navigation']);
-      print render($content['body']);
-    ?>
-              </div>
-      <div style="width: 40%;float:right;">
-          <?php print render($content['field_instructionimage']); ?>
+                <?php
+                  // We hide the comments and links now so that we can render them later.
+                  hide($content['comments']);
+                  hide($content['links']);
+                  hide($content['book_navigation']);
+                  print render($content['body']);
+                ?>
+          </div>
+          <div style="width: 40%;float:right;">
+              <?php print render($content['field_instructionimage']); ?>
+          </div>
       </div>
-      </div>
-  </div>
+    </div>
+
     <div style="clear:both;">
   <?php 
     hide($content['links']); 
     print render($content['book_navigation']);
   ?>
          </div>   
+        <div style="width:100%;clear:both;">
+              <?php
+              
+                 function modifytaxomonylinks(&$content, $fieldtomodify, $node) {
+                    $qp = htmlqp($content[$fieldtomodify][0]['#markup'], 'a'); // Generate a new QueryPath object.
+                    foreach ($qp as $item) {
+                        $theurl = $item->attr("href");
+                        // $item is a QueryPath object
+                        $item->attr("href", $theurl."?camefrom=".$node->nid);
+                    }
+                    $content[$fieldtomodify][0]['#markup'] = $qp->parent()->html();
+                }
+                modifytaxomonylinks($parentBook,'field_material', $node);
+                modifytaxomonylinks($parentBook,'field_teknik', $node);
+                modifytaxomonylinks($parentBook,'field_verktyg', $node);
+                          
+              print render($parentBook['field_material']);
+              print render($parentBook['field_teknik']);
+              print render($parentBook['field_verktyg']);
+              ?>
+        </div>
+
+
   <?php print render($content['comments']); ?>
 
 </div>

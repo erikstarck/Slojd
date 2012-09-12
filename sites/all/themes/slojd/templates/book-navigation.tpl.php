@@ -51,7 +51,7 @@ global $base_url;
     $qp->find("li.leaf a")->addClass("simple-dialog");
     $qp->top()->find("li.leaf a")->attr("name", "region-content");
     $qp->top()->find("li.leaf a")->attr("title", " ");
-    $qp->top()->find("li.leaf a")->attr("rel", "width:960px ");
+    $qp->top()->find("li.leaf a")->attr("rel", "width:960px;  ");
 
 
     //Save the first and last links to session

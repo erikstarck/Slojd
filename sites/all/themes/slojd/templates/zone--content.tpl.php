@@ -2,6 +2,8 @@
 <script type="text/javascript">
     jQuery(document).ready(function(){
         jQuery(".karusell").css("position","static");
+        jQuery(".simple-dialog").attr("rel","height:400");
+         jQuery(".loadmessage").css("display", "none");
     });
 </script>
 
