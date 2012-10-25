@@ -23,7 +23,7 @@ function logorotater_block_view($delta = '') {
 	
     $logos = array("sites/default/files/logo_160_1.jpg", "sites/default/files/logo_160_2.jpg", "sites/default/files/logo_160_3.jpg", "sites/default/files/logo_160_4.jpg");
     
-	$resultingHtml="<div class='rotatinglogo'><a href='".$base_url."/content/slöjdkorgen'><img src='".$base_url."/".$logos[rand(0,3)]."'/></a></div>";
+	$resultingHtml="<div class='rotatinglogo'><a href='".$base_url."/'><img src='".$base_url."/".$logos[rand(0,3)]."'/></a></div>";
 	$block['content']["#markup"] = $resultingHtml;
 	return $block;
 }
