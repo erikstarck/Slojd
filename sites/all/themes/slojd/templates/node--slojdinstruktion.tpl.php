@@ -81,7 +81,7 @@ global $base_url;
             modifytaxomonylinks($content,'field_material', $node);
             modifytaxomonylinks($content,'field_teknik', $node);
             modifytaxomonylinks($content,'field_verktyg', $node);
-            
+            hide($content['field_inspiration']);
             print render($content);
             ?>
         </div>
