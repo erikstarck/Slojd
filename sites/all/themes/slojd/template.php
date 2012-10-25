@@ -28,6 +28,26 @@ return $result;
 
 
 /**
+ * Implements hook_menu_local_tasks_alter().
+ * Changes the add new forum thread text and hides it when not needed.
+ */
+function slojd_menu_local_tasks_alter(&$data, $router_item, $root_path) {
+    //Hide the "Skapa ny Diskussions..." unless in an actual forum
+    if(current_path() == "forum") {
+        unset($data['actions']['output']['forum']);
+    }
+    else if ($root_path == 'forum' || $root_path == 'forum/%') {
+        $container = (isset($router_item['page_arguments'][0]) ? $router_item['page_arguments'][0]->container : 0);
+        if (!empty($container)) {
+            unset($data['actions']['output']['forum']);
+        }
+        else {
+            $data['actions']['output']['forum']['#link']['title'] = t("Create new forum thread");
+        }
+    }
+}
+
+/**
  * Hook to do minor changes to forms.
  */
 function slojd_form_alter(&$form, &$form_state, $form_id) {
@@ -41,6 +61,7 @@ function slojd_form_alter(&$form, &$form_state, $form_id) {
 		$form['actions']['submit']['#value'] = t('Send reply');
   }
 }
+
 
 /**
  * Trying to modify how the Slรถjdkorgen menu is rendered.
