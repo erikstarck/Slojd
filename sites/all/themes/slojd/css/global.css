@@ -9,7 +9,9 @@ color: red;
 
 
 button,input[type="submit"], input[type="button"],
-.contactlink a {
+.contactlink a,
+ a.snyggknapp
+{
     background: #f6f8f9; /* Old browsers */
 background: -moz-linear-gradient(top,  #f6f8f9 0%, #e5ebee 50%, #d7dee3 51%, #f5f7f9 100%); /* FF3.6+ */
 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f6f8f9), color-stop(50%,#e5ebee), color-stop(51%,#d7dee3), color-stop(100%,#f5f7f9)); /* Chrome,Safari4+ */
@@ -26,7 +28,8 @@ padding: 8px;
 border-radius: 14px;
 }
 
-.contactlink a {
+.contactlink a ,
+a.snyggknapp {
     padding:8px !important;
     text-transform: uppercase !important;
     font-size: 12px !important;
@@ -92,6 +95,7 @@ width: 100%;
     padding: 0px;
     border:0;
     padding-bottom: 20px;
+    padding-top: 12px;
 }
 
 .slojdinstruktionimage {
@@ -529,8 +533,18 @@ ul.action-links li {
   text-align: center;
 }
 
+.taxonomisidacontent img {
+    float: right;
+    padding: 6px;
+}
+
 .taxonomisidacontent {
     width:800px;
+    padding-bottom: 40px;
+}
+
+.taxonomisidacontent h2{
+    padding-top: 20px;
 }
 
 .taxonomisidabuttons {
@@ -610,7 +624,9 @@ li.pager-item a,
     /* must be changed */
   background-image: url(../images/close_button.png);
 }
-
+.ui-dialog-title {
+    visibility: hidden;
+}
 
 .ui-corner-all {
   -moz-border-radius: 0px;

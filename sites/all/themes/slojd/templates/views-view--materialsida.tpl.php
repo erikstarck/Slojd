@@ -52,6 +52,14 @@
             <?php print $attachment_before; ?>
         </div>
     <?php endif; ?>
+        <div class="taxonomisidabuttons" style="margin-top: -50px;" >
+            <?php global $base_url;?>
+<?php if (isset($_GET["camefrom"])) { ?>            
+            <a class="simple-dialog " rel="width:960;position:[center,60];height:600" name="region-content" title=" " href="<?php echo $base_url."/node/".$_GET["camefrom"]?>">
+              <img src="<?php echo $base_url;?>/sites/all/themes/slojd/images/prev_button.png"/> 
+            </a>
+            <?php } ?>
+        </div>
 
     <div class="taxonomisidablock">
         <div class="taxonomisidacontent" >
@@ -68,12 +76,6 @@
             <?php if ($pager): ?>
                 <?php print $pager; ?>
             <?php endif; ?>
-        </div>
-        <div class="taxonomisidabuttons" >
-            <?php global $base_url;?>
-            <a class="simple-dialog" rel="width:960;position:[center,60];height:600" name="region-content" title=" " href="<?php echo $base_url."/node/".$_GET["camefrom"]?>">
-                <img src="<?php echo $base_url;?>/sites/all/themes/slojd/images/prev_button.png"/>
-            </a>
         </div>
     </div>
 

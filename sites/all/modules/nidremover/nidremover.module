@@ -1,0 +1,85 @@
+<?php
+
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ * Implements hook_field_widget_form().
+ */
+function nidremover_field_widget_form(&$form, &$form_state, $field, $instance, $langcode, $items, $delta, $element) {
+  switch ($instance['widget']['type']) {
+    case 'user_reference_autocomplete':
+      $element += array(
+        '#type' => 'textfield',
+        '#default_value' => isset($items[$delta]['uid']) ? $items[$delta]['uid'] : NULL,
+        '#autocomplete_path' => $instance['widget']['settings']['autocomplete_path'] . '/' . $instance['entity_type'] . '/' . $instance['bundle'] . '/' . $field['field_name'],
+        '#size' => $instance['widget']['settings']['size'],
+        '#element_validate' => array('user_reference_autocomplete_validate'),
+        '#value_callback' => 'nidremover_autocomplete_value',
+      );
+      break;
+  }
+  return array('uid' => $element);
+}
+
+/**
+ * Value callback for a user_reference autocomplete element.
+ *
+ * Substitute in the user name for the uid.
+ */
+function nidremover_autocomplete_value($element, $input = FALSE, $form_state) {
+  if ($input === FALSE) {
+    // We're building the displayed 'default value': expand the raw uid into
+    // "user name [uid:n]".
+    $uid = $element['#default_value'];
+    if (!empty($uid)) {
+      $q = db_select('users', 'u');
+      $q->addField('u', 'name');
+
+      $q->condition('u.uid', $uid)
+        ->range(0, 1);
+      $result = $q->execute();
+      // @todo If no result (user doesn't exist).
+      $value = $result->fetchField();
+      //$value .= ' [uid:' . $uid . ']';
+      return $value;
+    }
+  }
+}
+
+
+/**
+ * Implementation of hook_menu_alter().
+ */
+function nidremover_menu_alter(&$items) {
+  $items['userreference/autocomplete']['page callback'] = 'nidremover_userreference_autocomplete';
+}
+
+/**
+ * Menu callback for the autocomplete results.
+ */
+function nidremover_userreference_autocomplete($entity_type, $bundle, $field_name, $string = '') {
+  $field = field_info_field($field_name);
+  $instance = field_info_instance($entity_type, $field_name, $bundle);
+
+  $options = array(
+    'string' => $string,
+    'match' => $instance['widget']['settings']['autocomplete_match'],
+    'limit' => 10,
+  );
+  $references = node_reference_potential_references($field, $options);
+
+  $matches = array();
+  foreach ($references as $id => $row) {
+    // Markup is fine in autocompletion results (might happen when rendered
+    // through Views) but we want to remove hyperlinks.
+    $suggestion = preg_replace('/<a href="([^<]*)">([^<]*)<\/a>/', '$2', $row['rendered']);
+    // Add a class wrapper for a few required CSS overrides.
+    $matches[$row['title']] = '<div class="reference-autocomplete">' . $suggestion . '</div>';
+  }
+
+  drupal_json_output($matches);
+}
+?>

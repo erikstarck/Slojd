@@ -1,0 +1,6 @@
+name = NID Remover
+description = Removes the nid from fields.
+core = 7.x
+package = Slöjdklubben
+
+files[] = nidremover.module

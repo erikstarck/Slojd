@@ -50,7 +50,7 @@
                 }
                 ?>
                 <?php
-                $linktoprint = $parentBook['links']['print_pdf']['#links']['book_pdf']['href'];
+                $linktoprint = "printpdf/book/export/html/".$nid;
                 ?>
                 <a href="<?php echo $base_url."/".$linktoprint;?>" ><img src="<?php echo $base_url;?>/sites/all/themes/slojd/images/print_button.png"></a>
                 <!--
@@ -106,7 +106,7 @@
                   print render($content['body']);
                 ?>
           </div>
-          <div style="width: 40%;float:right;">
+          <div style="width: 40%;float:right;padding-bottom: 12px;">
               <?php print render($content['field_instructionimage']); ?>
           </div>
       </div>
